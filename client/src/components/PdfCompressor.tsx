@@ -38,7 +38,7 @@ export default function PdfCompressor() {
       setIsLoading(true);
       setStatus(`מכווץ את ה-PDF... ⏳`);
 
-      const response = await axios.post(`http://localhost:5000/api/compress/pdf`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/compress/pdf`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });

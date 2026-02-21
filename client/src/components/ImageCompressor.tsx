@@ -43,7 +43,7 @@ export default function ImageCompressor() {
       setIsLoading(true);
       setStatus(`מכווץ את התמונה... ⏳`);
 
-      const response = await axios.post(`http://localhost:5000/api/compress/image`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/compress/image`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });

@@ -39,7 +39,7 @@ export default function Mp4ToMp3() {
       setStatus(`ממיר את הוידאו ל-MP3... ⏳`);
 
       // פונים לנתיב ההמרה שלנו בשרת
-      const response = await axios.post(`http://localhost:5000/api/convert/mp4-to-mp3`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/convert/mp4-to-mp3`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });

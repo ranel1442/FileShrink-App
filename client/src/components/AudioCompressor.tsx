@@ -35,7 +35,7 @@ export default function AudioCompressor() {
       setIsLoading(true);
       setStatus(`מכווץ את קובץ השמע... ⏳`);
 
-      const response = await axios.post(`http://localhost:5000/api/compress/audio`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/compress/audio`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });

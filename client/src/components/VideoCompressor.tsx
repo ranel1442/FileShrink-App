@@ -35,7 +35,7 @@ export default function VideoCompressor() {
       setIsLoading(true);
       setStatus(`מכווץ את הוידאו... ⏳ (זה עשוי לקחת כמה דקות לקבצים גדולים)`);
 
-      const response = await axios.post(`http://localhost:5000/api/compress/video`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/compress/video`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });

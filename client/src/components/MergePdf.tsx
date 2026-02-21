@@ -47,7 +47,7 @@ export default function MergePdf() {
       setIsLoading(true);
       setStatus(`ממזג ${files.length} קבצים למסמך אחד... ⏳`);
 
-      const response = await axios.post(`http://localhost:5000/api/merge/pdf`, formData, {
+      const response = await axios.post(`https://fileshrink-app.onrender.com/api/merge/pdf`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         responseType: 'blob',
       });
