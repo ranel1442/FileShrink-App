@@ -1,0 +1,17 @@
+# התעלמות מספריות כבדות
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# התעלמות מקבצי סביבה (סיסמאות וכו')
+.env
+
+# התעלמות מתיקיית ההעלאות הזמניות של השרת
+server/uploads/
+
+# התעלמות מקבצי בנייה של הריאקט
+client/dist/
+
+# התעלמות מקבצי מערכת של ווינדוס/מאק
+.DS_Store
+Thumbs.db

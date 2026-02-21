@@ -1,0 +1,32 @@
+{
+  "image": {
+    "total": 6,
+    "today": 2,
+    "lastDate": "2026-02-21"
+  },
+  "pdf": {
+    "total": 2,
+    "today": 2,
+    "lastDate": "2026-02-21"
+  },
+  "audio": {
+    "total": 1,
+    "today": 1,
+    "lastDate": "2026-02-21"
+  },
+  "merge_pdf": {
+    "total": 1,
+    "today": 1,
+    "lastDate": "2026-02-21"
+  },
+  "video": {
+    "total": 3,
+    "today": 3,
+    "lastDate": "2026-02-21"
+  },
+  "mp4_to_mp3": {
+    "total": 3,
+    "today": 3,
+    "lastDate": "2026-02-21"
+  }
+}

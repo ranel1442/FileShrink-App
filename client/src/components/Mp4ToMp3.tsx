@@ -1,0 +1,153 @@
+import { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import axios from 'axios';
+
+export default function Mp4ToMp3() {
+  const [file, setFile] = useState<File | null>(null);
+  const [status, setStatus] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [quality, setQuality] = useState<string>('medium');
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  
+  // הסטייט שמחזיק *רק* את שם הקובץ בלי הסיומת
+  const [baseFileName, setBaseFileName] = useState<string>('');
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    if (acceptedFiles.length > 0) {
+      setFile(acceptedFiles[0]);
+      setStatus('');
+      setDownloadUrl(null);
+    }
+  }, []);
+
+  // הגבלה: מקבל אך ורק קבצי MP4!
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
+    onDrop, 
+    maxFiles: 1,
+    accept: { 'video/mp4': ['.mp4'] } 
+  });
+
+  const handleConvert = async () => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('quality', quality);
+
+    try {
+      setIsLoading(true);
+      setStatus(`ממיר את הוידאו ל-MP3... ⏳`);
+
+      // פונים לנתיב ההמרה שלנו בשרת
+      const response = await axios.post(`http://localhost:5000/api/convert/mp4-to-mp3`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        responseType: 'blob',
+      });
+
+      // חילוץ שם הקובץ המקורי ללא הסיומת (.mp4)
+      const nameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
+      setBaseFileName(`audio-${nameWithoutExt}`);
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      setDownloadUrl(url);
+
+      setStatus('ההמרה הסתיימה בהצלחה! 🎉');
+    } catch (error) {
+      console.error(error);
+      setStatus(`שגיאה בהמרה 😢 (בדוק את הטרמינל)`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReset = () => {
+    setFile(null);
+    setDownloadUrl(null);
+    setStatus('');
+    setBaseFileName('');
+  };
+return (
+    <div style={{ backgroundColor: 'rgba(255,255,255,0.7)', padding: '30px', borderRadius: '15px', boxShadow: '0 8px 32px rgba(0,0,0,0.05)', border: '1px solid rgba(255,255,255,0.4)' }}>
+      <h2 style={{ color: '#9b59b6', marginBottom: '20px' }}>חילוץ שמע (MP4 ל-MP3) 🎵</h2>
+      
+      {!downloadUrl ? (
+        <>
+          <div 
+            {...getRootProps()} 
+            style={{
+              border: `2px dashed ${isDragActive ? '#28a745' : '#9b59b6'}`,
+              borderRadius: '15px', padding: '40px', cursor: 'pointer',
+              backgroundColor: isDragActive ? 'rgba(40, 167, 69, 0.1)' : 'rgba(155, 89, 182, 0.05)',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            <input {...getInputProps()} />
+            <p style={{ color: '#333', margin: 0, fontWeight: 'bold', fontSize: '1.1rem' }}>
+              גרור לכאן קובץ וידאו (MP4), או לחץ לבחירה
+            </p>
+          </div>
+
+          {/* === אזור בחירת האיכות וההמרה === */}
+          {file && (
+            <div className="action-area">
+              <div className="file-name-display">
+                🎵 קובץ: {file.name}
+              </div>
+              
+              <div className="quality-select-wrapper">
+                <label>איכות שמע (Bitrate):</label>
+                <select 
+                  className="elegant-select"
+                  value={quality} 
+                  onChange={(e) => setQuality(e.target.value)}
+                >
+                  <option value="large">גדול (320kbps - איכות מקסימלית)</option>
+                  <option value="medium">בינוני (192kbps - מומלץ)</option>
+                  <option value="small">קטן (96kbps - איכות נמוכה)</option>
+                </select>
+              </div>
+
+              <button 
+                className="primary-action-btn" 
+                onClick={handleConvert} 
+                disabled={isLoading} 
+                style={{ backgroundColor: '#9b59b6' }}
+              >
+                {isLoading ? 'ממיר...' : 'המר עכשיו'}
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        /* === אזור ההורדה של קובץ השמע המוכן === */
+        <div className="action-area" style={{ backgroundColor: 'rgba(40, 167, 69, 0.1)', border: '1px solid rgba(40, 167, 69, 0.3)' }}>
+          <h3 style={{ color: '#155724', marginBottom: '15px' }}>קובץ השמע מוכן! 🎉</h3>
+          
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%', marginBottom: '20px' }}>
+            <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#555', direction: 'ltr' }}>.mp3</span>
+            <input 
+              type="text" 
+              className="elegant-select"
+              value={baseFileName} 
+              onChange={(e) => setBaseFileName(e.target.value)}
+              style={{ width: '200px', minWidth: 'auto', direction: 'ltr', textAlign: 'right' }}
+            />
+            <label style={{ fontWeight: 'bold', color: '#155724' }}>:שם הקובץ</label>
+          </div>
+
+          <a href={downloadUrl} download={`${baseFileName}.mp3`} style={{ textDecoration: 'none', width: '100%' }}>
+            <button className="primary-action-btn" style={{ backgroundColor: '#28a745', width: '100%', maxWidth: '300px', marginBottom: '15px' }}>
+              ⬇️ הורד קובץ שמע
+            </button>
+          </a>
+          
+          <button className="back-button" onClick={handleReset} style={{ marginTop: '10px' }}>
+            🔄 המר וידאו נוסף
+          </button>
+        </div>
+      )}
+
+      {status && !downloadUrl && <p style={{ marginTop: '20px', fontWeight: 'bold', fontSize: '1.1rem', color: status.includes('שגיאה') ? '#dc3545' : '#28a745' }}>{status}</p>}
+    </div>
+  );
+}

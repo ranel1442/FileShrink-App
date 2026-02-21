@@ -1,0 +1,245 @@
+/* הגדרות כלליות והרקע הראשי */
+.app-container {
+  min-height: 100vh;
+  width: 100%; /* התוספת שמוודאת פריסה מלאה */
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.content-wrapper {
+  background-color: rgba(255, 255, 255, 0.2); /* רקע חצי שקוף */
+  backdrop-filter: blur(10px); /* אפקט זכוכית */
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  max-width: 900px;
+  width: 100%;
+}
+
+/* כותרות */
+.main-title {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 10px;
+  /* אפשר להוסיף כאן לוגו אם תרצה בעתיד */
+}
+
+.sub-title {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* רשת הכרטיסיות */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+/* עיצוב כרטיסייה בודדת */
+.tool-card {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  /* גבול עבה ושקוף כברירת מחדל */
+  border: 3px solid transparent; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* סגנונות לאייקונים */
+.card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+/* כותרות ותיאורים בתוך הכרטיסייה */
+.tool-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+.tool-card p {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* === צבעים ספציפיים לכל כרטיסייה (לפי התמונה) === */
+
+/* המרה ל-MP3 (סגול) */
+.card-mp3 { border-color: #9b59b6; }
+.card-mp3 .card-icon, .card-mp3 h3 { color: #9b59b6; }
+
+/* כיווץ PDF (אדום) */
+.card-pdf { border-color: #e74c3c; }
+.card-pdf .card-icon, .card-pdf h3 { color: #e74c3c; }
+
+/* כיווץ תמונות (כתום/צהוב) */
+.card-image { border-color: #f39c12; }
+.card-image .card-icon, .card-image h3 { color: #f39c12; }
+
+/* כיווץ וידאו (ירוק) */
+.card-video { border-color: #2ecc71; }
+.card-video .card-icon, .card-video h3 { color: #2ecc71; }
+
+/* מיזוג PDF (כחול) */
+.card-merge { border-color: #3498db; }
+.card-merge .card-icon, .card-merge h3 { color: #3498db; }
+
+/* כיווץ שמע (ורוד) */
+.card-audio { border-color: #e91e63; }
+.card-audio .card-icon, .card-audio h3 { color: #e91e63; }
+
+
+/* כפתור חזרה */
+.back-button-container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  padding: 8px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #fff;
+}
+
+
+
+/* =========================================
+   עיצובים חדשים לקומפוננטות הפנימיות 
+   ========================================= */
+
+/* כפתור חזור אלגנטי */
+.back-button-container {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px; /* צורה עגולה ואלגנטית */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* אזור הפעולות (איפה שבוחרים איכות ולוחצים כווץ) */
+.action-area {
+  margin-top: 30px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.4); /* רקע זכוכיתי רך במקום האפור הכבד */
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* תצוגת שם הקובץ */
+.file-name-display {
+  font-weight: bold;
+  color: #2c3e50;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-size: 1.1rem;
+}
+
+/* אזור בחירת האיכות */
+.quality-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* עיצוב התפריט הנגלל (Select) */
+.elegant-select {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  min-width: 250px;
+  font-family: inherit;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.elegant-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* כפתור הפעולה המרכזי (למשל "כווץ תמונה") */
+.primary-action-btn {
+  padding: 12px 35px;
+  border: none;
+  border-radius: 30px; /* עגול ואלגנטי */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.primary-action-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.primary-action-btn:disabled {
+  background: #bdc3c7 !important;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
