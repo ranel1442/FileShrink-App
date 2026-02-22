@@ -6,13 +6,16 @@
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-007808?style=for-the-badge&logo=FFmpeg&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
+### 🌟 [Click Here to Try FileShrink Live!](https://file-shrink-app.vercel.app) 🌟
+
 **FileShrink** is a powerful, full-stack web application designed to compress and convert various types of files (PDF, Images, Video, Audio) completely free of charge. 
 
 Unlike many other services that rely on paid third-party APIs with strict quotas, FileShrink is built to be **100% independent**. It processes heavy media files using robust, open-source engines running directly on the backend.
 
 ## 🚀 Live Demo
-* **Frontend:** Deployed on [Vercel](https://vercel.com/)
-* **Backend:** Deployed as a Docker container on [Render](https://render.com/)
+* **Live Website:** [https://file-shrink-app.vercel.app](https://file-shrink-app.vercel.app)
+* **Frontend:** Deployed on Vercel.
+* **Backend:** Deployed as a Docker container on Render.
 
 ---
 
