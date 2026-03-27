@@ -288,58 +288,48 @@
 
 
 
-
 /* ========================================== */
-/* תיקון רספונסיביות לתיבות הבחירה במובייל */
-/* ========================================== */
-@media (max-width: 768px) {
-
-  /* ממרכז את הקונטיינר של התווית ותיבת הבחירה ומשנה לעמודה */
-  label {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  /* מתאים את הגודל של תיבת הבחירה עצמה למסך */
-  select {
-    width: 100% !important;
-    max-width: 280px;
-    margin-top: 8px;
-    box-sizing: border-box;
-    font-size: 16px !important;
-    /* טיפ למובייל: גודל 16 מונע מהדפדפן לעשות זום אוטומטי מעצבן בלחיצה */
-  }
-}
-
-
-
-
-/* ========================================== */
-/* תיקון רספונסיביות לתיבות הבחירה במובייל */
+/* תיקון רספונסיביות מלא לתיבות הבחירה במובייל */
 /* ========================================== */
 @media (max-width: 768px) {
 
-  /* ממרכז את הקונטיינר של התווית ותיבת הבחירה ומשנה לעמודה */
-  label {
+  /* מציאת המיכל שמחזיק את התווית (label) ואת תיבת הבחירה (select) */
+  /* אנחנו מחפשים div שמכיל label ולאחריו select */
+  div:has(> label + select) {
     display: flex !important;
     flex-direction: column !important;
+    /* שינוי לעמודה: הטקסט מעל התיבה */
     align-items: center !important;
+    /* מירכוז */
     text-align: center;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    gap: 8px;
+    /* רווח בין הכיתוב לתיבה */
   }
 
-  /* מתאים את הגודל של תיבת הבחירה עצמה למסך */
-  select {
+  /* התווית (הכיתוב) */
+  div:has(> label + select)>label {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  /* תיבת הבחירה (ה-select) - קיצור והתאמה */
+  div:has(> label + select)>select {
     width: 100% !important;
-    max-width: 280px;
-    margin-top: 8px;
+    /* רווח מלא בתוך המיכל הלבן */
+    max-width: 100% !important;
+    /* מניעת בליטה החוצה */
     box-sizing: border-box;
+    /* מבטיח שה-padding לא יגדיל את התיבה */
     font-size: 16px !important;
-    /* טיפ למובייל: גודל 16 מונע מהדפדפן לעשות זום אוטומטי מעצבן בלחיצה */
+    /* גודל נוח למובייל למניעת זום */
+    padding: 10px;
+    /* ריפוד פנימי יפה */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    appearance: none;
+    /* מראה אחיד בין דפדפנים */
   }
 }
