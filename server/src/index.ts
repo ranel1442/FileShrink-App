@@ -445,6 +445,75 @@ app.post('/api/merge/pdf', upload.array('files', 20), async (req: Request, res: 
 
 
 
+
+
+
+
+
+
+
+
+
+// ------------------------------------------
+// כלי 7: התאמת וידאו לרשתות חברתיות (Reels/TikTok)
+// ------------------------------------------
+app.post('/api/convert/social', upload.single('file'), (req: Request, res: Response): any => {
+  if (!req.file) return res.status(400).json({ error: 'לא נשלח קובץ.' });
+
+  const originalName = req.file.originalname;
+  const filePath = req.file.path;
+  const outputPath = path.join(uploadDir, `social-${req.file.filename}.mp4`);
+
+  try {
+    ffmpeg(filePath)
+      .videoCodec('libx264')   // קידוד וידאו סטנדרטי
+      .audioCodec('aac')       // קידוד אודיו יציב לסושיאל
+      .outputOptions([
+        '-pix_fmt yuv420p',    // קריטי: מונע מסך שחור בטלפונים
+        '-profile:v main',     // תאימות מושלמת למובייל
+        '-vf scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2', // נרמול רזולוציה ל-9:16 עם שוליים במידת הצורך
+        '-preset ultrafast',   // שמירה על זיכרון השרת
+        '-threads 1'           // מניעת קריסת RAM ב-Render
+      ])
+      .save(outputPath)
+      .on('end', () => {
+        updateStats('social'); // עדכון סטטיסטיקות לכלי החדש שלנו!
+        
+        res.download(outputPath, `reels-ready-${originalName}`, (err) => {
+          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+          if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
+        });
+      })
+      .on('error', (err) => {
+        console.error('שגיאה בהתאמת וידאו לסושיאל:', err);
+        res.status(500).json({ error: 'שגיאה בעיבוד הווידאו.' });
+        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      });
+      
+  } catch (error) {
+    console.error('שגיאה כללית:', error);
+    res.status(500).json({ error: 'שגיאה בתהליך.' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ==========================================
 //  הפעלת השרת
 // ==========================================
