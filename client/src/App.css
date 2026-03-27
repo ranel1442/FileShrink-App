@@ -1,7 +1,8 @@
 /* הגדרות כלליות והרקע הראשי */
 .app-container {
   min-height: 100vh;
-  width: 100%; /* התוספת שמוודאת פריסה מלאה */
+  width: 100%;
+  /* התוספת שמוודאת פריסה מלאה */
   background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -11,8 +12,10 @@
 }
 
 .content-wrapper {
-  background-color: rgba(255, 255, 255, 0.2); /* רקע חצי שקוף */
-  backdrop-filter: blur(10px); /* אפקט זכוכית */
+  background-color: rgba(255, 255, 255, 0.2);
+  /* רקע חצי שקוף */
+  backdrop-filter: blur(10px);
+  /* אפקט זכוכית */
   border-radius: 20px;
   padding: 40px;
   text-align: center;
@@ -52,9 +55,9 @@
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   /* גבול עבה ושקוף כברירת מחדל */
-  border: 3px solid transparent; 
+  border: 3px solid transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +66,7 @@
 
 .tool-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* סגנונות לאייקונים */
@@ -87,28 +90,64 @@
 /* === צבעים ספציפיים לכל כרטיסייה (לפי התמונה) === */
 
 /* המרה ל-MP3 (סגול) */
-.card-mp3 { border-color: #9b59b6; }
-.card-mp3 .card-icon, .card-mp3 h3 { color: #9b59b6; }
+.card-mp3 {
+  border-color: #9b59b6;
+}
+
+.card-mp3 .card-icon,
+.card-mp3 h3 {
+  color: #9b59b6;
+}
 
 /* כיווץ PDF (אדום) */
-.card-pdf { border-color: #e74c3c; }
-.card-pdf .card-icon, .card-pdf h3 { color: #e74c3c; }
+.card-pdf {
+  border-color: #e74c3c;
+}
+
+.card-pdf .card-icon,
+.card-pdf h3 {
+  color: #e74c3c;
+}
 
 /* כיווץ תמונות (כתום/צהוב) */
-.card-image { border-color: #f39c12; }
-.card-image .card-icon, .card-image h3 { color: #f39c12; }
+.card-image {
+  border-color: #f39c12;
+}
+
+.card-image .card-icon,
+.card-image h3 {
+  color: #f39c12;
+}
 
 /* כיווץ וידאו (ירוק) */
-.card-video { border-color: #2ecc71; }
-.card-video .card-icon, .card-video h3 { color: #2ecc71; }
+.card-video {
+  border-color: #2ecc71;
+}
+
+.card-video .card-icon,
+.card-video h3 {
+  color: #2ecc71;
+}
 
 /* מיזוג PDF (כחול) */
-.card-merge { border-color: #3498db; }
-.card-merge .card-icon, .card-merge h3 { color: #3498db; }
+.card-merge {
+  border-color: #3498db;
+}
+
+.card-merge .card-icon,
+.card-merge h3 {
+  color: #3498db;
+}
 
 /* כיווץ שמע (ורוד) */
-.card-audio { border-color: #e91e63; }
-.card-audio .card-icon, .card-audio h3 { color: #e91e63; }
+.card-audio {
+  border-color: #e91e63;
+}
+
+.card-audio .card-icon,
+.card-audio h3 {
+  color: #e91e63;
+}
 
 
 /* כפתור חזרה */
@@ -150,28 +189,30 @@
   backdrop-filter: blur(5px);
   color: #333;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 30px; /* צורה עגולה ואלגנטית */
+  border-radius: 30px;
+  /* צורה עגולה ואלגנטית */
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .back-button:hover {
   background: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* אזור הפעולות (איפה שבוחרים איכות ולוחצים כווץ) */
 .action-area {
   margin-top: 30px;
   padding: 25px;
-  background: rgba(255, 255, 255, 0.4); /* רקע זכוכיתי רך במקום האפור הכבד */
+  background: rgba(255, 255, 255, 0.4);
+  /* רקע זכוכיתי רך במקום האפור הכבד */
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.3);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -185,7 +226,7 @@
   background: #ffffff;
   padding: 10px 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   font-size: 1.1rem;
 }
 
@@ -211,7 +252,7 @@
   transition: all 0.3s ease;
   min-width: 250px;
   font-family: inherit;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
 .elegant-select:focus {
@@ -223,18 +264,19 @@
 .primary-action-btn {
   padding: 12px 35px;
   border: none;
-  border-radius: 30px; /* עגול ואלגנטי */
+  border-radius: 30px;
+  /* עגול ואלגנטי */
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .primary-action-btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .primary-action-btn:disabled {
@@ -242,4 +284,62 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+
+
+
+/* ========================================== */
+/* תיקון רספונסיביות לתיבות הבחירה במובייל */
+/* ========================================== */
+@media (max-width: 768px) {
+
+  /* ממרכז את הקונטיינר של התווית ותיבת הבחירה ומשנה לעמודה */
+  label {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* מתאים את הגודל של תיבת הבחירה עצמה למסך */
+  select {
+    width: 100% !important;
+    max-width: 280px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    font-size: 16px !important;
+    /* טיפ למובייל: גודל 16 מונע מהדפדפן לעשות זום אוטומטי מעצבן בלחיצה */
+  }
+}
+
+
+
+
+/* ========================================== */
+/* תיקון רספונסיביות לתיבות הבחירה במובייל */
+/* ========================================== */
+@media (max-width: 768px) {
+
+  /* ממרכז את הקונטיינר של התווית ותיבת הבחירה ומשנה לעמודה */
+  label {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* מתאים את הגודל של תיבת הבחירה עצמה למסך */
+  select {
+    width: 100% !important;
+    max-width: 280px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    font-size: 16px !important;
+    /* טיפ למובייל: גודל 16 מונע מהדפדפן לעשות זום אוטומטי מעצבן בלחיצה */
+  }
 }

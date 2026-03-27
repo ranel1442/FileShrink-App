@@ -303,9 +303,10 @@ app.post('/api/compress/video', upload.single('file'), (req: Request, res: Respo
     // מפעילים את FFmpeg על הקובץ שהועלה
     ffmpeg(filePath)
       .outputOptions([
-        '-vcodec libx264', // מקודד וידאו סטנדרטי
-        `-crf ${crfValue}`, // רמת הכיווץ שלנו
-        '-preset fast' // מהירות העיבוד
+        '-vcodec libx264',    // מקודד וידאו סטנדרטי
+        `-crf ${crfValue}`,   // רמת הכיווץ הדינמית שלך - נשמרת בדיוק כמו שרצית!
+        '-preset ultrafast',  // שונה מ-fast כדי להקל משמעותית על זיכרון ה-RAM
+        '-threads 1'          // הגבלת העיבוד לתהליך אחד בלבד למניעת קריסת השרת
       ])
       .save(outputPath)
       .on('end', () => {
@@ -324,7 +325,8 @@ app.post('/api/compress/video', upload.single('file'), (req: Request, res: Respo
         if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
       });
       
-  } catch (error) {
+  } 
+  catch (error) {
     console.error('שגיאה כללית:', error);
     res.status(500).json({ error: 'שגיאה בתהליך.' });
   }
