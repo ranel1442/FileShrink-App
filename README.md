@@ -22,11 +22,13 @@ Unlike many other services that rely on paid third-party APIs with strict quotas
 ## ✨ Features
 
 1. **📄 PDF Compression**: Uses `Ghostscript` to significantly reduce PDF file sizes while maintaining readability.
-2. **🖼️ Image Compression**: Uses `Sharp` to compress JPEG, PNG, WEBP, and even animated GIFs efficiently.
-3. **🎬 Video Compression**: Uses `FFmpeg` to compress MP4 videos.
-4. **🎧 Audio Compression**: Uses `FFmpeg` to reduce MP3 bitrates.
-5. **🎵 MP4 to MP3 Extraction**: Quickly extracts the audio track from video files.
-6. **📊 Secret Analytics Dashboard**: A hidden `/stats` route that displays real-time usage statistics tracked via a custom JSON store.
+2. **📑 PDF Merge**: Seamlessly combines multiple PDF files and images into a single, organized document.
+3. **🖼️ Image Compression**: Uses `Sharp` to compress JPEG, PNG, WEBP, and even animated GIFs efficiently.
+4. **🎬 Video Compression**: Uses `FFmpeg` to compress MP4 videos dynamically with controlled thread usage.
+5. **🎧 Audio Compression**: Uses `FFmpeg` to reduce MP3 bitrates.
+6. **🎵 MP4 to MP3 Extraction**: Quickly extracts the audio track from video files.
+7. **📱 Social Media Optimization**: Fixes codec errors (like black screens) and prepares AI-generated videos perfectly for Instagram Reels and TikTok.
+8. **📊 Secret Analytics Dashboard**: A hidden `/stats` route that displays real-time usage statistics tracked via a custom JSON store.
 
 ---
 
@@ -44,7 +46,7 @@ Unlike many other services that rely on paid third-party APIs with strict quotas
 * **TypeScript**: Type-safe backend architecture.
 * **Multer**: For handling `multipart/form-data` and temporary file storage.
 * **FFmpeg (`fluent-ffmpeg`)**: For robust video and audio processing.
-* **Ghostscript (`child_process`)**: For native PDF compression.
+* **Ghostscript (`child_process`)**: For native PDF compression and merging.
 * **Sharp**: For high-performance image processing.
 * **Docker**: Containerized environment to ensure Ghostscript and FFmpeg are available in production.
 
