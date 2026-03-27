@@ -33,7 +33,6 @@ export default function SocialVideo() {
             setIsLoading(true);
             setStatus(`מתאים את הוידאו לסושיאל... ⏳ (זה עשוי לקחת קצת זמן)`);
 
-            // שים לב לכתובת ה-API החדשה שיצרנו בשרת
             const response = await axios.post(`https://fileshrink-app.onrender.com/api/convert/social`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 responseType: 'blob',
@@ -63,16 +62,18 @@ export default function SocialVideo() {
 
     return (
         <div style={{ backgroundColor: 'rgba(255,255,255,0.7)', padding: '30px', borderRadius: '15px', boxShadow: '0 8px 32px rgba(0,0,0,0.05)', border: '1px solid rgba(255,255,255,0.4)' }}>
-            <h2 style={{ color: '#17a2b8', marginBottom: '20px' }}>התאמה לסושיאל (Reels/TikTok) 📱</h2>
+            {/* כותרת באדום פסטל רך ותואם */}
+            <h2 style={{ color: '#dc3545', marginBottom: '20px' }}>התאמה לסושיאל (Reels/TikTok) 📱</h2>
 
             {!downloadUrl ? (
                 <>
                     <div
                         {...getRootProps()}
                         style={{
-                            border: `2px dashed ${isDragActive ? '#28a745' : '#17a2b8'}`,
+                            // מסגרת תואמת באדום פסטל
+                            border: `2px dashed ${isDragActive ? '#28a745' : '#dc3545'}`,
                             borderRadius: '15px', padding: '40px', cursor: 'pointer',
-                            backgroundColor: isDragActive ? 'rgba(40, 167, 69, 0.1)' : 'rgba(23, 162, 184, 0.05)',
+                            backgroundColor: isDragActive ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.05)',
                             transition: 'all 0.3s ease'
                         }}
                     >
@@ -88,11 +89,12 @@ export default function SocialVideo() {
                                 📱 קובץ: {file.name}
                             </div>
 
+                            {/* כפתור באדום פסטל */}
                             <button
                                 className="primary-action-btn"
                                 onClick={handleConvert}
                                 disabled={isLoading}
-                                style={{ backgroundColor: '#17a2b8' }}
+                                style={{ backgroundColor: '#dc3545' }}
                             >
                                 {isLoading ? 'מעבד וידאו...' : 'הכן וידאו לסושיאל'}
                             </button>
